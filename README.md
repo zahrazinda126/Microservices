@@ -173,4 +173,4 @@ Microservices architecture is very powerful for large-scale systems. Companies l
 
 However, microservices are not always the best solution. Some companies such as **Segment and Amazon Prime Video** discovered that microservices introduced unnecessary complexity and cost. These companies simplified their systems by returning to monolithic or modular architectures.
 
-This shows that the best architecture depends on the **size of the company, system requirements, and team capabilities**.# Microservices
+This shows that the best architecture depends on the **size of the company, system requirements, and team capabilities**.
