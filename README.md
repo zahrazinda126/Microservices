@@ -10,7 +10,7 @@ A simple way to understand this is through a real-world example.
 
 Imagine a **restaurant**.
 
-A monolithic system is like one person doing everything — taking orders, cooking, serving food, and handling payments. If that person gets overwhelmed, everything slows down.
+A monolithic system is like one person doing everything let's say taking orders, cooking, serving food, and handling payments. If that person gets overwhelmed, everything slows down.
 
 Microservices are like having different workers:
 
