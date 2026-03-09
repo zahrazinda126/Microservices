@@ -37,7 +37,7 @@ Netflix is one of the most famous examples of a company using microservices arch
 
 In the early days, Netflix used a **monolithic system**. As the number of users increased and the platform expanded globally, the monolithic architecture became difficult to manage.
 
-For example, if a small part of the system failed — such as the recommendation feature — it could affect the entire platform.
+For example, if a small part of the system failed, such as the recommendation feature,it could affect the entire platform.
 
 To solve this problem, Netflix moved to a **microservices architecture running on cloud infrastructure (AWS)**.
 
