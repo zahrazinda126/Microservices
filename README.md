@@ -1,176 +1,198 @@
-# Software Construction Research: Microservices
+# Software Construction Research: Microservices Architecture
 
 ## Introduction
-Modern software systems are becoming increasingly complex. To manage this complexity, many companies adopt **Microservices Architecture**. Microservices break a large application into smaller independent services. Each service performs a specific function and communicates with other services through APIs.
 
-This approach allows companies to scale systems easily, update components independently, and improve reliability. However, microservices can also introduce complexity, which has caused some companies to move back to a **monolithic architecture**.
+Modern software systems can grow very large and complex. When everything is built as one big application, it becomes difficult to update, maintain, or scale the system. To solve this problem, many companies use **microservices architecture**.
 
-This research looks at:
-1. How Netflix uses microservices.
-2. Other companies successfully using microservices.
-3. Companies that moved away from microservices back to monolithic systems.
+Microservices architecture divides a large system into **smaller independent services**. Each service performs one specific task and communicates with others using APIs.
+
+A simple way to understand this is through a real-world example.
+
+Imagine a **restaurant**.
+
+A monolithic system is like one person doing everything — taking orders, cooking, serving food, and handling payments. If that person gets overwhelmed, everything slows down.
+
+Microservices are like having different workers:
+
+- One person takes orders  
+- Another prepares the food  
+- Another handles payments  
+- Another delivers the food  
+
+Each worker focuses on one task, which makes the system more efficient.
+
+However, managing many small services can also become complicated. Some companies later discovered that microservices introduced too much complexity and moved back to simpler architectures.
+
+This research explores:
+
+1. How Netflix uses microservices  
+2. Other companies that use microservices successfully  
+3. Companies that later simplified their systems after using microservices  
 
 ---
 
 # 1. How Netflix Uses Microservices
 
-Netflix is one of the most famous examples of a company that successfully uses **microservices architecture**.
+Netflix is one of the most famous examples of a company using microservices architecture.
 
-Originally, Netflix used a **monolithic system**, but as the platform grew and the number of users increased, the system became difficult to scale and maintain. Netflix therefore migrated to a **microservices architecture hosted on the cloud (AWS)**.
+In the early days, Netflix used a **monolithic system**. As the number of users increased and the platform expanded globally, the monolithic architecture became difficult to manage.
 
-Instead of one large application, Netflix now runs **hundreds of small services**, each responsible for a specific task such as:
+For example, if a small part of the system failed — such as the recommendation feature — it could affect the entire platform.
 
-- User authentication
-- Video streaming
-- Recommendations
-- Search
-- Billing
-- Content delivery
+To solve this problem, Netflix moved to a **microservices architecture running on cloud infrastructure (AWS)**.
 
-Each service can be developed, deployed, and scaled independently.
+Instead of one large application, Netflix now operates **hundreds of small services**, each responsible for a specific function.
 
-### Key technologies used by Netflix
-Netflix developed several tools to support microservices:
+Examples of Netflix microservices include:
 
-- **Eureka** – service discovery
-- **Zuul** – API gateway
-- **Hystrix** – fault tolerance
-- **Ribbon** – load balancing
-- **Chaos Monkey** – failure testing
+- User authentication service  
+- Video streaming service  
+- Recommendation service  
+- Search service  
+- Billing service  
 
-### Benefits Netflix gets from microservices
-- Independent deployment of services
-- Better scalability
-- Faster innovation
-- Higher system reliability
-- Fault isolation (failure in one service does not crash the entire system)
+### Example
 
-Because of these advantages, Netflix can support **millions of users streaming simultaneously worldwide**.
+When a user presses **Play** on a movie:
+
+1. The authentication service verifies the user.
+2. The billing service checks the subscription.
+3. The recommendation service suggests similar movies.
+4. The streaming service delivers the video.
+
+Each service performs its task independently.
+
+Netflix also created tools to manage microservices, including:
+
+- **Eureka** – service discovery  
+- **Zuul** – API gateway  
+- **Hystrix** – fault tolerance  
+- **Ribbon** – load balancing  
+
+### Benefits Netflix Gets
+
+- Easy scaling for millions of users  
+- Faster feature updates  
+- Better reliability  
+- Teams can work independently  
+
+Because of microservices, Netflix can handle **millions of people streaming videos at the same time worldwide**.
 
 ---
 
 # 2. Other Companies Using Microservices
 
-Many large technology companies use microservices successfully.
+Many technology companies use microservices to manage large systems.
 
 ## Uber
-Uber originally started with a **monolithic architecture**, but as the company expanded globally, the system became difficult to manage.
 
-Uber adopted microservices so that different teams could manage different parts of the system independently.
+Uber originally started with a **monolithic architecture**, but as the platform expanded to many countries and cities, the system became difficult to maintain.
 
-Today Uber operates **thousands of microservices** supporting services such as:
+Uber adopted microservices so that different parts of the system could be managed independently.
 
-- Ride requests
-- Driver management
-- Payment processing
-- Maps and navigation
-- Uber Eats
+For example, Uber has separate services for:
 
-Microservices allow Uber to scale specific services depending on demand in different regions.
+- Ride requests  
+- Driver management  
+- Payment processing  
+- Maps and navigation  
+- Uber Eats delivery  
 
-### Benefits for Uber
-- Independent scaling of services
-- Faster deployment
-- Support for global operations
-- Improved reliability
+If the ride request system becomes busy in a particular city, Uber can scale only that service without affecting the rest of the platform.
+
+This makes the system more flexible and reliable.
 
 ---
 
 ## Spotify
-Spotify uses microservices to manage its music streaming platform.
 
-Spotify organizes teams into **small autonomous teams called "squads"**. Each squad is responsible for a specific microservice.
+Spotify also uses microservices for its music streaming platform.
 
-Examples of Spotify services include:
+Spotify organizes its engineers into small teams called **squads**. Each squad is responsible for a specific microservice.
 
-- Music recommendations
-- User playlists
-- Search
-- Streaming
-- User accounts
+Examples of services managed by different squads include:
 
-Spotify also built an internal developer platform called **Backstage**, which helps engineers easily create and manage microservices.
+- Playlist management  
+- Music recommendations  
+- Search functionality  
+- User accounts  
 
-### Benefits for Spotify
-- Faster feature development
-- Independent team ownership
-- Continuous deployment
-- Scalability for millions of users
+This allows teams to develop and deploy features independently.
+
+For example, if Spotify wants to improve its **music recommendation algorithm**, that team can release the update without affecting other parts of the system.
+
+Spotify also developed an internal platform called **Backstage**, which helps developers create and manage microservices more easily.
 
 ---
 
-# 3. Companies That Moved Back From Microservices
+# 3. Companies That Simplified Their Systems After Microservices
 
-Although microservices offer many advantages, some companies discovered that they introduced **too much complexity**. As a result, some organizations moved back to **monolithic or modular monolithic architectures**.
+Although microservices can be powerful, they also introduce challenges. Managing many services can make systems harder to maintain.
 
-## Segment
+Some companies realized that microservices were **too complex for their needs**, so they simplified their systems.
 
-Segment is a **Customer Data Platform (CDP)** that helps companies collect user data from websites and applications and send it to analytics and marketing tools.
+## Basecamp (37signals)
 
-Segment originally built its system using **over 100 microservices**. Each service handled a small part of the system.
+Basecamp is a project management software company.
 
-However, managing so many services became extremely difficult. Engineers had to deal with:
+The company experimented with microservices but eventually decided to continue using a **monolithic architecture**.
 
-- Service communication
-- Multiple deployments
-- Complex debugging
-- Distributed monitoring
+According to Basecamp engineers, microservices require managing many separate systems such as:
 
-Because of these challenges, Segment decided to **combine many services into a monolithic architecture**.
+- multiple servers  
+- service communication  
+- monitoring systems  
+- deployment pipelines  
 
-### Results
-After moving back to a monolith:
-- Development became faster
-- Maintenance became easier
-- System complexity was reduced
+For a smaller engineering team, this created unnecessary complexity.
 
-### Reasons for the change
-- Too many services to manage
-- Deployment complexity
-- Difficult debugging
-- Lower developer productivity
+Instead, Basecamp chose to maintain a **well-structured monolithic application**.
+
+This allowed developers to:
+
+- deploy updates faster  
+- debug problems more easily  
+- reduce infrastructure complexity  
+
+A simple comparison is managing **many small shops versus one organized supermarket**.  
+The supermarket (monolith) can sometimes be easier to manage than many separate shops (microservices).
 
 ---
 
-## Amazon Prime Video
+## SoundCloud
 
-Amazon Prime Video also experienced issues with microservices in one of its internal systems.
+SoundCloud is a music streaming platform where users upload and share audio.
 
-The company originally built a monitoring system using multiple microservices. Each service processed and transferred data to other services.
+As the platform grew, SoundCloud adopted microservices to manage increasing traffic.
 
-However, this architecture created excessive **data transfer between services**, which significantly increased infrastructure costs.
+However, over time the number of services became very large. Engineers had to manage communication between many systems.
 
-Amazon engineers redesigned the system and replaced the microservices with a **single monolithic service** for that particular workflow.
+This created problems such as:
 
-### Results
-After the redesign:
-- Infrastructure costs were reduced by **about 90%**
-- System performance improved
-- Architecture became simpler
+- complex deployments  
+- difficult debugging  
+- managing many services at once  
 
-### Reasons for the change
-- High operational cost
-- Excessive service communication
-- Unnecessary system complexity
+Because of these challenges, SoundCloud engineers began **simplifying their architecture** by merging some services together.
+
+The goal was to reduce the number of independent services and make the system easier to maintain.
 
 ---
 
 ## Others
 
-Several other well-known companies have also reduced or reconsidered microservices:
+Other companies that have simplified or reconsidered microservices include:
 
-- **InVision** – merged several services back into a monolith to reduce infrastructure costs.
-- **Shopify** – adopted a **modular monolith** instead of fully distributed microservices.
-- **Basecamp (37signals)** – chose a monolithic architecture for simplicity and easier development.
-- **SoundCloud** – simplified its architecture after managing too many microservices became difficult.
-- **Etsy** – restructured parts of its architecture to reduce distributed system complexity.
+- **Etsy** – simplified parts of its architecture to reduce distributed system complexity  
+- **InVision** – merged some microservices to reduce infrastructure cost  
+- **Shopify** – adopted a modular monolith to make development easier  
 
 ---
 
 # Conclusion
 
-Microservices architecture is very powerful for large-scale systems. Companies like **Netflix, Uber, and Spotify** use microservices successfully to support millions of users and scale their platforms globally.
+Microservices architecture can be very useful for large systems with millions of users. Companies such as **Netflix, Uber, and Spotify** use microservices successfully to support large-scale platforms.
 
-However, microservices are not always the best solution. Some companies such as **Segment and Amazon Prime Video** discovered that microservices introduced unnecessary complexity and cost. These companies simplified their systems by returning to monolithic or modular architectures.
+However, microservices are not always the best solution. Companies like **Basecamp and SoundCloud** discovered that too many services can create unnecessary complexity.
 
-This shows that the best architecture depends on the **size of the company, system requirements, and team capabilities**.
+These examples show that the choice between **microservices and monolithic architecture depends on the needs of the system, the size of the engineering team, and the complexity of the platform**.
